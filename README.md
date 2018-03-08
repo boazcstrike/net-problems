@@ -1,12 +1,15 @@
 ## Net-Problems v0.01
 
 #### Make sure to have at least 1 hour of old data (use cmd)
-###### C:\>ping google.com >>C:Users/username/Desktop/ping.txt -t
+###### C:\>ping google.com >>C:Users/username/Desktop/ping1.txt -t
 
 #### and have at least 1 hour of new data (use cmd)
-###### C:\>ping google.com >>C:Users/username/Desktop/ping-new.txt -t
+###### C:\>ping google.com >>C:Users/username/Desktop/ping2.txt -t
+
+#### it is recommended to have at least 4 ping.txts, (ping1.txt, ping2.txt, ping3.txt ping4.txt) to see the results of the connection
 
 Copy paste this to your index.php
+Change for($i=?) ==> ? to the number of pings you have done.
 -------
 
 
@@ -20,21 +23,14 @@ Copy paste this to your index.php
 
 		<!-- Bootstrap CSS -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
-
-
 	</head>
 	<body style="font-family: Droid Sans Mono,monospace;">
-
 		<div class="container" style="margin-top: 5em;">
-
 			<div class="">
 				<h1>Net Problems v0.01</h1>
 				<h5><?= date('M d, Y, D'); ?></h5>
 			</div>
-
 			<div class="row">
-
-
 				<?php for($i=3;$i>0;$i--): 
 
 					$file_url = "C:/Users/Bo/Desktop/ping".$i.".txt";
@@ -57,10 +53,7 @@ Copy paste this to your index.php
 					$percent_none = $dec_none * 100;
 
 				?>
-
-
 				<div class="col-md-6">
-
 					<div class="panel panel-default">
 						<div class="panel-heading">
 							<bR><br>
@@ -95,24 +88,10 @@ Copy paste this to your index.php
 					   		</p>
 					  	</div>
 					</div>
-
-<!-- 					<?php
-
-						// $fix1 = str_replace("Pinging google.com [172.217.31.238] with 32 bytes of data:", "", $file_content);
-						// $fix2 = str_replace("Request", "<br>Request", $fix1);
-						// $final_output = str_replace("Reply", "<br>Reply", $fix2);
-
-					?> -->
 				</div>
-
-
 			<?php endfor; ?>
-
-
 			</div>
-
 		</div>
-
 		<!-- Optional JavaScript -->
 		<!-- jQuery first, then Popper.js, then Bootstrap JS -->
 		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
@@ -121,6 +100,5 @@ Copy paste this to your index.php
 	</body>
 </html>
 
-
--------
-Load the index.php on the server and you should see statistics of your internet connection from pinging Google.com
+---
+## Load the index.php on the server and you should see statistics of your internet connection from pinging Google.com
