@@ -22,8 +22,7 @@
 
 			<div class="row">
 
-
-				<?php for($i=3;$i>0;$i--): 
+				<?php for($i=4;$i>0;$i--): 
 
 					$file_url = "C:/Users/Bo/Desktop/ping".$i.".txt";
 
@@ -31,16 +30,32 @@
 
 					$rto = substr_count($file_content, "Request timed out.");
 					$dnu = substr_count($file_content, "Destination net unreachable.");
-					$rfs = substr_count($file_content, "TTL=54");
 
-					$total = $rto + $dnu + $rfs;
+					$rfs=0;
+
+					for($n=0;$n<100;$n++){
+						$str = "TTL=".$n;
+						$temp_rfs = substr_count($file_content, $str);
+
+						$rfs = $temp_rfs + $rfs;
+						// echo $n."=n; count=".$rfs;
+					}
+
+					//requests time outs spend more time on my end
+					$rto_sec = $rto*2;
+					//this is the total seconds accumulated
+					$total = $rto_sec + $dnu + $rfs;
+
+					//per minute
 					$min = $total/60;
+					//per hour
 					$hour = $min/60;
 
-
+					//solve for the loss
 					$dec_loss = $rto / $total;
 					$percent_loss = $dec_loss * 100;
 
+					//solve for the disconnect
 					$dec_none = $dnu / $total;
 					$percent_none = $dec_none * 100;
 
@@ -76,7 +91,7 @@
 						    	<?= $dnu; ?>
 					    	</h6>
 					    	<br>
-					    	<p>Elapsed time:<br>
+					    	<p>Estimated elapsed time:<br>
 						    	<?= $hour . " hours"; ?><br>
 						    	<?= $min . " minutes"; ?><br>
 						    	<?= $total . " outputs"; ?><br>
