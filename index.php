@@ -22,9 +22,9 @@
 
 			<div class="row">
 
-				<?php for($i=4;$i>0;$i--): 
+				<?php for($i=6;$i>0;$i--): 
 
-					$file_url = "C:/Users/Bo/Desktop/ping".$i.".txt";
+					$file_url = "C:/Users/Bo/Desktop/TestPing/ping".$i.".txt";
 
 					$file_content =  file_get_contents($file_url);
 
@@ -33,16 +33,16 @@
 
 					$rfs=0;
 
-					for($n=0;$n<100;$n++){
+					for($n=54;$n<=56;$n++){
 						$str = "TTL=".$n;
 						$temp_rfs = substr_count($file_content, $str);
 
 						$rfs = $temp_rfs + $rfs;
-						// echo $n."=n; count=".$rfs;
+						// echo "<br>n=".$n."<br>   count=".$rfs."<br>    TTL=".$n."<br>     Counted= ".$temp_rfs;
 					}
 
 					//requests time outs spend more time on my end
-					$rto_sec = $rto*2;
+					$rto_sec = $rto*1.5;
 					//this is the total seconds accumulated
 					$total = $rto_sec + $dnu + $rfs;
 
