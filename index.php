@@ -33,7 +33,7 @@
 
 					$rfs=0;
 
-					for($n=54;$n<=56;$n++){
+					for($n=10;$n<=100;$n++){
 						$str = "TTL=".$n;
 						$temp_rfs = substr_count($file_content, $str);
 
